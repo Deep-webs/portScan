@@ -1,6 +1,13 @@
 # portScan
 端口扫描
 
+### 使用须知
+使用前需要安装nmap命令以及python-nmap模块
+```
+yum install nmap
+pip install python-nmap
+```
+
 ### 使用方法
 ```
 Usage: portScan.py [Options]
@@ -12,4 +19,40 @@ Options:
                         The hosts will be scan
   -p SCANPORT, --port=SCANPORT
                         The ports will be scan
+```
+
+### 使用示例
+1. python portScan.py -H 127.0.0.1 -p 3306
+```
+ ----- 127.0.0.1 -----
+127.0.0.1 tcp/3306 open
+
+
+```
+2. python portScan.py -H 127.0.0.1 -p 3306-3308
+```
+ ----- 127.0.0.1 -----
+127.0.0.1 tcp/3306 open
+127.0.0.1 tcp/3307 open
+127.0.0.1 tcp/3308 closed
+```
+3. python portScan.py -H 127.0.0.1 -p 3306,3309
+```
+ ----- 127.0.0.1 -----
+127.0.0.1 tcp/3306 open
+127.0.0.1 tcp/3309 closed
+
+```
+4. python portScan.py -H 127.0.0.1-2 -p 3306-3308
+```
+ ----- 127.0.0.1 -----
+127.0.0.1 tcp/3306 open
+127.0.0.1 tcp/3307 open
+127.0.0.1 tcp/3308 closed
+
+ ----- 127.0.0.2 -----
+127.0.0.2 tcp/3306 open
+127.0.0.2 tcp/3307 open
+127.0.0.2 tcp/3308 closed
+
 ```
